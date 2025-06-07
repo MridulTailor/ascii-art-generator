@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import {
   Upload,
   Download,
@@ -45,7 +45,7 @@ const AsciiArtConverter = () => {
     minimal: "█░ ",
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
       if (window.innerWidth < 768) {
@@ -83,7 +83,7 @@ const AsciiArtConverter = () => {
     setIsResizing(false);
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (isResizing) {
       document.addEventListener("mousemove", handleMouseMove);
       document.addEventListener("mouseup", handleMouseUp);
@@ -549,44 +549,6 @@ const AsciiArtConverter = () => {
       </div>
 
       <canvas ref={canvasRef} className="hidden" />
-
-      <style jsx>{`
-        .slider::-webkit-slider-thumb {
-          appearance: none;
-          height: 20px;
-          width: 20px;
-          border-radius: 50%;
-          background: linear-gradient(45deg, #3b82f6, #8b5cf6);
-          cursor: pointer;
-          box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
-          border: 2px solid rgba(255, 255, 255, 0.2);
-        }
-        .slider::-moz-range-thumb {
-          height: 20px;
-          width: 20px;
-          border-radius: 50%;
-          background: linear-gradient(45deg, #3b82f6, #8b5cf6);
-          cursor: pointer;
-          border: 2px solid rgba(255, 255, 255, 0.2);
-          box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
-        }
-        .slider::-webkit-slider-track {
-          background: rgba(255, 255, 255, 0.2);
-          height: 12px;
-          border-radius: 6px;
-          backdrop-filter: blur(10px);
-        }
-        .slider::-moz-range-track {
-          background: rgba(255, 255, 255, 0.2);
-          height: 12px;
-          border-radius: 6px;
-          backdrop-filter: blur(10px);
-        }
-        select option {
-          background: rgba(30, 41, 59, 0.95);
-          color: white;
-        }
-      `}</style>
     </div>
   );
 };

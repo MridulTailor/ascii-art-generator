@@ -1,5 +1,5 @@
-import React from "react";
 import AsciiArtConverter from "./AsciiArtConverter.jsx";
+import "./index.css";
 
 function App() {
   return <AsciiArtConverter />;
